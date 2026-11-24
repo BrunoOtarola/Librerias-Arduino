@@ -2,23 +2,25 @@
 
 Repositorio que centraliza **librerías, drivers y archivos de apoyo** para proyectos con **Arduino Uno** y **NodeMCU (ESP8266)**. Todo listo para copiar y usar.
 
-[![Descargar driver CH340](https://img.shields.io/badge/Descargar-Driver%20CH340-blue?style=for-the-badge&logo=arduino)](https://github.com/BrunoOtarola/Librerias-Arduino/raw/main/drivers/CH340.rar)
+[![Descargar driver CH340](https://img.shields.io/badge/Descargar-Driver%20CH340%20(Arduino%20Uno)-blue?style=for-the-badge&logo=arduino)](https://github.com/BrunoOtarola/Librerias-Arduino/raw/main/drivers/CH340%20-%20WINDOWS%20-%20ARDUINO%20UNO.rar)
+[![Drivers ESP8266MOD](https://img.shields.io/badge/Ver-Drivers%20ESP8266MOD%20(CP210x)-00979D?style=for-the-badge&logo=espressif)](drivers/ESP8266MOD_DRIVERS)
 
 ## Índice
 
-1. [Contenido del repositorio](#-contenido-del-repositorio)
-2. [Driver CH340](#-driver-ch340)
-3. [Soporte de placa ESP8266 (NodeMCU)](#-soporte-de-placa-esp8266-nodemcu)
-4. [Instalación de librerías](#-instalación-de-librerías)
-5. [Carga de código](#-carga-de-código)
-6. [Solución de problemas](#-solución-de-problemas)
+1. [Contenido del repositorio](#contenido-del-repositorio)
+2. [Drivers USB (CH340 y ESP8266MOD / CP210x)](#drivers-usb-ch340-y-esp8266mod--cp210x)
+3. [Soporte de placa ESP8266 (NodeMCU)](#soporte-de-placa-esp8266-nodemcu)
+4. [Instalación de librerías](#instalación-de-librerías)
+5. [Carga de código](#carga-de-código)
+6. [Solución de problemas](#solución-de-problemas)
 
 ## Contenido del repositorio
 
 | Carpeta | Descripción |
 | --- | --- |
 | [`libraries/`](libraries) | Librerías de Arduino listas para copiar. |
-| [`drivers/`](drivers) | Drivers USB para placas compatibles (CH340). |
+| [`drivers/`](drivers) | Drivers USB para Arduino Uno (`CH340 - WINDOWS - ARDUINO UNO.rar`) y NodeMCU / ESP8266MOD (`ESP8266MOD_DRIVERS/`). |
+| [`IDE/`](IDE) | Configuraciones para Arduino IDE (`link_adicional_tarjeta.txt` con la URL del gestor de tarjetas). |
 | [`esp8266/`](esp8266) | Archivos auxiliares de ESP8266 (`board.json` y `link.txt`). |
 
 ### Librerías incluidas
@@ -31,23 +33,38 @@ Repositorio que centraliza **librerías, drivers y archivos de apoyo** para proy
 | Comunicación / Nube | WiFi, Firebase, ArduinoJson |
 | Otros | IRremote, Adafruit_BusIO, Adafruit_PCF8574 |
 
-## Driver CH340
+## Drivers USB (CH340 y ESP8266MOD / CP210x)
 
-Si tu placa (Arduino Uno compatible / clon) usa el chip **CH340**, necesitas instalar su driver.
+### 1. Driver CH340 (Arduino Uno)
 
---> **[Descargar CH340.rar directamente](https://github.com/BrunoOtarola/Librerias-Arduino/raw/main/drivers/CH340.rar)** <--
+Si tu placa (Arduino Uno compatible / clon) usa el chip **CH340**, instala este driver para Windows:
+
+--> **[Descargar CH340 - WINDOWS - ARDUINO UNO.rar directamente](https://github.com/BrunoOtarola/Librerias-Arduino/raw/main/drivers/CH340%20-%20WINDOWS%20-%20ARDUINO%20UNO.rar)** <--
 
 Pasos:
 
-1. Descarga y descomprime `CH340.rar`.
-2. Ejecuta el instalador correspondiente a tu sistema operativo.
+1. Descarga y descomprime `CH340 - WINDOWS - ARDUINO UNO.rar`.
+2. Ejecuta el instalador.
 3. Reconecta la placa y verifica que aparezca un puerto **COM** en Arduino IDE (**Herramientas > Puerto**).
+
+### 2. Drivers ESP8266MOD / NodeMCU (CP210x)
+
+En la carpeta [`drivers/ESP8266MOD_DRIVERS/`](drivers/ESP8266MOD_DRIVERS) se encuentran los drivers **CP210x (Silicon Labs)** necesarios para módulos **ESP8266MOD / NodeMCU**:
+
+| Archivo | Sistema / Uso |
+| --- | --- |
+| [`CP210x_Universal_Windows_Driver.zip`](drivers/ESP8266MOD_DRIVERS/CP210x_Universal_Windows_Driver.zip) | Driver universal para Windows 10 / 11 (recomendado). |
+| [`CP210x_Windows_Drivers.zip`](drivers/ESP8266MOD_DRIVERS/CP210x_Windows_Drivers.zip) | Driver estándar para Windows. |
+| [`CP210x_VCP_Windows.zip`](drivers/ESP8266MOD_DRIVERS/CP210x_VCP_Windows.zip) | Driver Virtual COM Port (VCP) para Windows. |
+| [`CP210x_Windows_Drivers_with_Serial_Enumeration.zip`](drivers/ESP8266MOD_DRIVERS/CP210x_Windows_Drivers_with_Serial_Enumeration.zip) | Driver para Windows con enumeración serial. |
+| [`Mac_OSX_VCP_Driver.zip`](drivers/ESP8266MOD_DRIVERS/Mac_OSX_VCP_Driver.zip) | Driver VCP para macOS. |
+| [`CP210x_VCP_Win2K.exe`](drivers/ESP8266MOD_DRIVERS/CP210x_VCP_Win2K.exe) / `VCP_WinCE*.zip` / `CP210x_5x_AppNote_Archive.zip` | Versiones legacy y documentación técnica. |
 
 ## Soporte de placa ESP8266 (NodeMCU)
 
 1. Abre Arduino IDE.
 2. Ve a **Archivo > Preferencias** (Windows) o **Arduino IDE > Settings** (macOS).
-3. En **Gestor de URLs Adicionales de Tarjetas**, agrega:
+3. En **Gestor de URLs Adicionales de Tarjetas**, copia y pega el enlace incluido en [`IDE/link_adicional_tarjeta.txt`](IDE/link_adicional_tarjeta.txt) (también disponible en [`esp8266/link.txt`](esp8266/link.txt)):
    ```
    http://arduino.esp8266.com/stable/package_esp8266com_index.json
    ```
@@ -80,4 +97,4 @@ Luego reinicia Arduino IDE.
 
 ---
 
-Actualizado: 13-05-2026 - Bruno Otárola
+Actualizado: 24-11-2026 - Bruno Otárola
